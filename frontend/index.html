@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Catalog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<script src="js/api.js"></script>
+<script src="js/dom.js" defer></script>
+
+<body>
+<div class="container">
+    <!-- Окно с фильмами -->
+    <div class="movies-section">
+        <!-- Заголовок и строка поиска с сортировкой -->
+        <div class="header">
+            <div class="logo">Catalogue</div>
+            <div class="search-sort-wrapper">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search movies..." />
+                </div>
+                <div class="sort">
+                    <select id="sortBy">
+                        <option value="title">Sort by title</option>
+                        <option value="rating">Sort by rating</option>
+                        <option value="releaseDate">Sort by release date</option>
+                        <option value="metascore">Sort by metascore</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Фильмы -->
+        <main class="movies">
+            <div class="movie-card">
+                <img src="https://via.placeholder.com/150" alt="Movie" />
+                <h3>Movie Title</h3>
+                <p>Genres: Action, Drama</p>
+                <p>Rating: 8.5</p>
+            </div>
+            <!-- Повторяйте структуру для других фильмов -->
+        </main>
+    </div>
+    <div class="filters">
+        <!-- Фильтр жанров -->
+        <div class="filter-group">
+            <label>Genres:</label>
+            <div class="genre-options">
+                <div class="genre-option">
+                    <input type="checkbox" id="genreAction" value="Action">
+                    <label for="genreAction">
+                        <span class="checkbox"></span> Action
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreAdventure" value="Adventure">
+                    <label for="genreAdventure">
+                        <span class="checkbox"></span> Adventure
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreAnimation" value="Animation">
+                    <label for="genreAnimation">
+                        <span class="checkbox"></span> Animation
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreBiography" value="Biography">
+                    <label for="genreBiography">
+                        <span class="checkbox"></span> Biography
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreComedy" value="Comedy">
+                    <label for="genreComedy">
+                        <span class="checkbox"></span> Comedy
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreCrime" value="Crime">
+                    <label for="genreCrime">
+                        <span class="checkbox"></span> Crime
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreDrama" value="Drama">
+                    <label for="genreDrama">
+                        <span class="checkbox"></span> Drama
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreFantasy" value="Fantasy">
+                    <label for="genreFantasy">
+                        <span class="checkbox"></span> Fantasy
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreMystery" value="Mystery">
+                    <label for="genreMystery">
+                        <span class="checkbox"></span> Mystery
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreMusic" value="Music">
+                    <label for="genreMusic">
+                        <span class="checkbox"></span> Music
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreRomance" value="Romance">
+                    <label for="genreRomance">
+                        <span class="checkbox"></span> Romance
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreSciFi" value="Sci-fi">
+                    <label for="genreSciFi">
+                        <span class="checkbox"></span> Sci-fi
+                    </label>
+                </div>
+                <div class="genre-option">
+                    <input type="checkbox" id="genreThriller" value="Thriller">
+                    <label for="genreThriller">
+                        <span class="checkbox"></span> Thriller
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Фильтр по возрастному рейтингу -->
+        <div class="filter-group">
+            <label>Age Rating:</label>
+            <div class="age-rating-options">
+                <div class="age-rating-option">
+                    <input type="checkbox" id="ratingG" value="G">
+                    <label for="ratingG">
+                        <span class="checkbox"></span> G
+                    </label>
+                </div>
+                <div class="age-rating-option">
+                    <input type="checkbox" id="ratingPG" value="PG">
+                    <label for="ratingPG">
+                        <span class="checkbox"></span> PG
+                    </label>
+                </div>
+                <div class="age-rating-option">
+                    <input type="checkbox" id="ratingPG13" value="PG-13">
+                    <label for="ratingPG13">
+                        <span class="checkbox"></span> PG-13
+                    </label>
+                </div>
+                <div class="age-rating-option">
+                    <input type="checkbox" id="ratingR" value="R">
+                    <label for="ratingR">
+                        <span class="checkbox"></span> R
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Фильтр по году выпуска -->
+        <div class="filter-group">
+            <label>Release Year:</label>
+            <div class="year-range">
+                <input type="number" id="yearFrom" placeholder="From" min="1900" max="2024" />
+                <input type="number" id="yearTo" placeholder="To" min="1900" max="2024" />
+            </div>
+        </div>
+
+        <!-- Фильтр по рейтингу -->
+        <div class="filter-group">
+            <label>Rating:</label>
+            <div class="rating-range">
+                <input type="number" id="ratingFrom" placeholder="From" min="0" max="10" />
+                <input type="number" id="ratingTo" placeholder="To" min="0" max="10" />
+            </div>
+        </div>
+
+        <!-- Кнопки для применения и сброса фильтров -->
+        <div class="filter-actions">
+            <button class="apply-btn" id="applyFilters">Apply</button>
+            <button class="reset-btn" id="resetFilters">Reset Filters</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

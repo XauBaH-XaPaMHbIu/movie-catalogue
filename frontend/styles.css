@@ -1,0 +1,318 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #222; /* Темный фон */
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px; /* расстояние между окнами */
+}
+
+.movies-section {
+    background-color: #333; /* Фон для окна с фильмами */
+    border-radius: 8px;
+    padding: 20px;
+    flex-grow: 1; /* Окно с фильмами занимает большую часть */
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.search-sort-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    background-color: #444;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    width: 100%; /* строка поиска растягивается */
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.sort select {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 160px; /* фиксированная ширина для селекта сортировки */
+}
+
+.movies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.movie-card {
+    background-color: #444;
+    width: 200px;
+    padding: 10px;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.movie-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.movie-card p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* Окно фильтров */
+.filters {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 25%; /* Окно фильтров будет в 3 раза уже */
+    min-width: 250px; /* Убедимся, что окно фильтров не станет слишком узким */
+}
+
+/* Общий стиль для фильтров */
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    color: #fff;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.filter-group select,
+.filter-group input {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+}
+
+.filter-group input[type="number"] {
+    width: 48%; /* для полей с диапазонами */
+    margin-right: 4%;
+}
+
+.filter-group input[type="number"]:last-child {
+    margin-right: 0;
+}
+
+.filter-group input[type="number"]::-webkit-inner-spin-button,
+.filter-group input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.filter-group input[type="number"]::placeholder {
+    color: #aaa;
+}
+
+/* Чекбоксы жанров */
+.genre-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Два столбца */
+    gap: 10px;
+}
+
+.genre-option {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Расстояние между квадратом и текстом */
+    cursor: pointer;
+}
+
+.genre-option input {
+    display: none; /* Скрываем чекбокс */
+}
+
+.genre-option label {
+    font-size: 12px; /* Уменьшенный шрифт */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Стиль квадрата */
+.genre-option .checkbox {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Активное состояние чекбокса */
+.genre-option input:checked + label .checkbox {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+/* Чекбоксы возрастного рейтинга */
+.age-rating-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Два столбца */
+    gap: 10px;
+}
+
+.age-rating-option {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Расстояние между квадратом и текстом */
+    cursor: pointer;
+}
+
+.age-rating-option input {
+    display: none; /* Скрываем чекбокс */
+}
+
+.age-rating-option label {
+    font-size: 12px; /* Уменьшенный шрифт */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Стиль квадрата */
+.age-rating-option .checkbox {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Активное состояние чекбокса */
+.age-rating-option input:checked + label .checkbox {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+.year-range,
+.rating-range {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.year-range input,
+.rating-range input {
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    width: 48%;
+    border: none;
+    border-radius: 4px;
+}
+
+.year-range input::placeholder,
+.rating-range input::placeholder {
+    color: #aaa;
+}
+
+/* Кнопки для применения и сброса фильтров */
+.filter-actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: flex-end; /* Размещение кнопок справа */
+}
+
+.apply-btn,
+.reset-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    width: 100%; /* Одинаковая ширина для кнопок */
+}
+
+.apply-btn {
+    background-color: #4caf50; /* Зеленый цвет для кнопки "Apply" */
+    color: #fff;
+}
+
+.reset-btn {
+    background-color: #333; /* Темно-серый фон для кнопки "Reset" */
+    color: #aaa; /* Сероватый текст */
+    border: 1px solid #444; /* Легкая граница */
+}
+
+.reset-btn:hover {
+    background-color: #444; /* Более темный фон при наведении */
+    color: #fff;
+}
+
+.apply-btn:hover {
+    background-color: #45a049; /* Более темный зеленый при наведении */
+}
+.add-movie-form {
+    margin-top: 20px;
+}
+
+.add-movie-form input,
+.add-movie-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Стиль для карточек фильмов */
+.movie-card {
+    display: inline-block;
+    width: 200px;
+    margin: 15px;
+    text-align: center;
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
